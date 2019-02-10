@@ -17,7 +17,7 @@ let burgers = {
         orm.update("burgers", val, condition, (res) => {
             cb(res);
         })
-    }
+    },
 }
 
 module.exports = burgers;

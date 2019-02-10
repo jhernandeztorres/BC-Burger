@@ -28,7 +28,8 @@ function objToSql(ob) {
         }
         return arr.toString();
     }
-}
+};
+
 let orm = {
     all: function (table, cb) {
         let queryString = "SELECT * FROM " + table;
@@ -50,7 +51,7 @@ let orm = {
         queryString += "VALUES (";
         queryString += printQuestionMarks(val.length);
         queryString += ") ";
-    
+
         console.log(queryString);
         connection.query(queryString, val, (err, result) => {
             if (err) {
@@ -62,9 +63,7 @@ let orm = {
     },
 
     update: function (table, val, condition, cb) {
-        console.log(JSON.stringify(val))
         let queryString = "UPDATE " + table;
-
         queryString += " SET ";
         queryString += objToSql(val);
         queryString += " WHERE ";
