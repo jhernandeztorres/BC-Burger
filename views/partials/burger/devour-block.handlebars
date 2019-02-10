@@ -4,11 +4,13 @@
 	</div>
 	<div class="card-body">
 		{{#each burger}}
+			{{#unless devoured}}
 		<div>
 			<p>{{id}}.) {{burger_name}}
 				<button class="btn btn-sm btn-outline-danger m-1 float-right devour-btn" data-id="{{id}}">Devour<i class="fas fa-utensils ml-2"></i></button>
 			</p>
 		</div>
+			{{/unless}}
 		{{/each}}
 	</div>
 </div>

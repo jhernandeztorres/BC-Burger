@@ -5,7 +5,7 @@ $(function() {
       console.log(id);
   
       let newDevourState = {
-        devoured: false
+        devoured: true
       };
   
       // Send the PUT request.
@@ -21,12 +21,13 @@ $(function() {
       );
     });
   
-    $("#submit").on("submit", function(event) {
+    $(".create-form").on("submit", function(event) {
       // Make sure to preventDefault on a submit event.
       event.preventDefault();
   
       let newBurger = {
-        name: $("#burger_name").val().trim(),
+        burger_name: $("#burger_name").val().trim(),
+        devour: 0
       };
       console.log(newBurger);
       // Send the POST request.
@@ -40,6 +41,18 @@ $(function() {
           location.reload();
         }
       );
+    });
+
+    $(".delete-btn").on("click", function(event){
+      event.preventDefault();
+      let id = $(this).attr("data-id");
+
+      $.ajax("/api/burgers/" + id, {
+        type: "DELETE"
+      }).then(function(){
+        console.log("Burger deleted", id);
+        location.reload();
+      });
     });
   });
   

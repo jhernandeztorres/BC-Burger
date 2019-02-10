@@ -42,9 +42,8 @@ let orm = {
     },
 
     create: function (table, cols, val, cb) {
-        console.log(JSON.stringify(cols))
+        // console.log(JSON.stringify(cols))
         let queryString = "INSERT INTO " + table;
-
         queryString += " (";
         queryString += cols.toString();
         queryString += ") ";
@@ -75,9 +74,23 @@ let orm = {
                 console.log("Error: " + err);
                 return;
             }
-            cb(result)
+            cb(result);
         })
+    },
+
+    delete: function (table, condition, cb) {
+        let queryString = "DELETE FROM " + table;
+        queryString += " WHERE ";
+        queryString += condition;
+
+        console.log(queryString);
+        connection.query(queryString, (err,result) => {
+            if(err){
+                throw err;
+            }
+            cb(result);
+        });
     }
-}
+};
 
 module.exports = orm;

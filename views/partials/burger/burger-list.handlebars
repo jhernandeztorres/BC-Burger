@@ -3,11 +3,14 @@
         <h4>Devoured Burgers</h4>
     </div>
     <div class="card-body">
-        {{#each devoured}}
+        {{#each burger}}
+            {{#if devoured}}
         <div>
             <p>{{id}}.) {{burger_name}}
+                <button class="btn btn-sm btn-outline-danger m-1 float-right delete-btn" data-id="{{id}}">Delete<i class="fas fa-trash-alt ml-2"></i></button>
             </p>
         </div>
+            {{/if}}
         {{/each}}
     </div>
 </div>
