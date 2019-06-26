@@ -78,15 +78,15 @@ let orm = {
         })
     },
 
-    delete: function (table, condition, cb) {
+    delete: function (table, val, condition, cb) {
+        console.log("Delete button pressed!!")
         let queryString = "DELETE FROM " + table;
         queryString += " WHERE ";
         queryString += condition;
-
         console.log(queryString);
         connection.query(queryString, (err,result) => {
             if(err){
-                throw err;
+                console.log("Error: " + err);
             }
             cb(result);
         });

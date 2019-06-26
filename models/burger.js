@@ -19,8 +19,8 @@ let burgers = {
         })
     },
 
-    delete: function(condition, cb){
-        orm.delete("burgers", condition, (res) => {
+    delete: function(val, condition, cb){
+        orm.delete("burgers", val, condition, (res) => {
             cb(res);
         })
     }

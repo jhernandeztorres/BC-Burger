@@ -36,7 +36,7 @@ $(function() {
         data: newBurger
       }).then(
         function() {
-          console.log("created new burger, " + newBurger);
+          console.log("created new burger, " + newBurger.burger_name);
           // Reload the page to get the updated list
           location.reload();
         }
@@ -48,9 +48,10 @@ $(function() {
       let id = $(this).attr("data-id");
 
       $.ajax("/api/burgers/" + id, {
-        type: "DELETE"
+        method: "DELETE"
       }).then(function(){
         console.log("Burger deleted", id);
+        // Reload the page to get the updated list
         location.reload();
       });
     });

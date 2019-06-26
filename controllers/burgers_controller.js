@@ -42,7 +42,7 @@ router.delete("/api/burgers/:id", (req,res) => {
     burgers.delete({
         devoured: req.body.devoured
     }, condition, (result) => {
-        if (result.changedRows == 0){
+        if (result.changedRows === 0){
             return res.status(404).end();
         } else {
             res.status(200).end();
